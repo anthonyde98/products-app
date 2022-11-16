@@ -1,0 +1,8 @@
+<div class="rating-container">
+    <div class="stars me-2">
+        <i *ngFor="let star of fullStars" class="{{starsIcons.full}}"></i>
+        <i *ngIf="halfStar" class="{{starsIcons.full + starsIcons.half}}"></i>
+        <i *ngFor="let star of emptyStars" class="{{starsIcons.empty}}"></i>
+    </div>
+    <span>{{rating | number:'1.1-1'}}</span>
+</div>

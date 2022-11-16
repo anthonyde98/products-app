@@ -1,0 +1,15 @@
+<section class="delete-modal-container" #modal id="modal">
+  <div class="card">
+    <div class="card-header">
+      <h3>Eliminar Producto</h3>
+      <button type="button" class="btn-close" (click)="cancel()" aria-label="Close"></button>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title text-center">¿Quiéres eliminar el producto <span class="fw-bold">{{ product.title }}</span>?</h5>
+    </div>
+    <div class="card-footer">
+      <button type="button" class="btn btn-danger" (click)="deleteProduct()">Eliminar</button>
+      <button type="button" class="btn btn-primary" (click)="cancel()">Cancelar</button>
+    </div>
+  </div>
+</section>

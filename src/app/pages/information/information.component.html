@@ -1,0 +1,36 @@
+<section class="container" *ngIf="product">
+    <div class="page-title card text-center my-4 p-2">
+        <h1>Información</h1>
+    </div>
+    <div class="product-data card shadow">
+        <img [src]="product.thumbnail" class="product-thumbnail" [alt]="product.title" />
+        <div class="product-info">
+            <div class="product-name">
+                <h2>{{ product.title }}</h2>
+            </div>
+            <div class="product-brand">
+                <p>{{ product.brand }}</p>
+            </div>
+            <div class="product-category">
+                <p>{{ product.category | titlecase }}</p>
+            </div>
+            <div class="product-rating">
+                <stars-rating [rating]="product.rating"></stars-rating>
+            </div>
+            <div class="product-price">
+                <h1 class="real-price">{{ product.price - (product.price * (product.discountPercentage / 100)) | currency:'USD' }}</h1>
+                <h4 class="before-price">{{ product.price | currency:'USD' }}</h4>
+            </div>
+            <div class="product-description">
+                <h6>Descripción</h6>
+                <p>{{ product.description }}</p>
+            </div>
+            <div class="product-quantity">
+                <h6>Cantidad</h6>
+                <p>{{ product.stock + ' ' + (product.stock === 1 ? 'unidad' : 'unidades')}}</p>
+            </div>
+        </div>
+    </div>
+    <image-slider [images]="product.images"></image-slider>
+    <a type="button" class="btn btn-light btn-volver mb-4" [routerLink]="['/']"><i class="fad fa-arrow-left"></i> Volver</a>
+</section>

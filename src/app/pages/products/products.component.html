@@ -1,0 +1,41 @@
+<section class="container">
+    <div class="card products-settings-container bg-light">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar un producto" [(ngModel)]="search" (keyup)="searchProductsByText()">
+        </div>
+        <div class="input-group me-2">
+            <span class="input-group-text">Categoría:</span>
+            <select class="form-select" [(ngModel)]="selectedFilter" (change)="searchProductsByCategory();">
+                <option *ngFor="let filter of fields" [value]="filter">{{ filter | titlecase }}</option>
+            </select>
+        </div>
+        <a [routerLink]="['/products', 'set']" class="btn btn-success"><i class="fad fa-plus me-2"></i>Añadir</a>
+    </div>
+    <div class="container-fluid bg-trasparent my-4 p-3 products-items-container">
+        <div class="items" *ngIf="products.length > 0">
+            <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+                <product [product]="product" *ngFor="let product of products | paginate: pagination"></product>
+            </div>
+            <div class="pagination-container">
+                <div class="quantity mt-4" n>
+                    <div class="input-group">
+                        <span class="input-group-text">Cantidad:</span>
+                        <select class="form-select" [(ngModel)]="limit" (change)="setLimit()">
+                            <option [style.display]="limitValue !== 25 ? (pagination.totalItems >= limitValue ? 'block' : 'none') : ''" *ngFor="let limitValue of limits" [value]="limitValue">{{ limitValue }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="paginate card mt-2">
+                    <pagination-controls
+                    previousLabel="Ant"
+                    nextLabel="Sig"
+                    (pageChange)="onPaginationChange($event)">
+                    </pagination-controls>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="products.length === 0" class="card no-items text-center p-3">
+            <h4>No hay productos para mostrar.</h4>
+        </div>
+    </div>
+</section>

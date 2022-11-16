@@ -1,0 +1,48 @@
+.delete-modal-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.649);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.card{
+    position: relative;
+    margin: 20px;
+    min-width: 230px;
+}
+
+.card-header{
+    padding: 20px;
+}
+
+.card-title{
+    margin: 20px;
+}
+
+.card-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.btn-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+@media (max-width: 350px) {
+    .card-header h3{
+        font-size: 16px;
+    }
+}

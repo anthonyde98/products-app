@@ -1,0 +1,64 @@
+<div class="product-form-container">
+    <div class="page-title card text-center my-4 py-2 px-4">
+        <h1>{{ action }}</h1>
+    </div>
+    <form class="my-4 mx-auto" [formGroup]="productForm" (ngSubmit)="sendFormData()">
+        <div class="card mb-3 principal-info">
+            <div class="product-thumbnail">
+                <div class="image-upload">
+                    <label for="image">
+                      <img [src]="thumbnail || defaultImage" alt="thumbnail">
+                    </label>
+                    <input id="image" type="file" accept="image/*" required (change)="showThumbnail($event)"/>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" [style.color]="estiloInput('title')"><i class="fad fa-sticky-note"></i></span>
+                    <input type="text" class="form-control" placeholder="Nombre" formControlName="title" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" [style.color]="estiloInput('brand')"><i class="fad fa-copyright"></i></span>
+                    <input type="text" class="form-control" placeholder="Marca" formControlName="brand" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" [style.color]="estiloInput('category')">Categoría:</span>
+                    <select class="form-select" formControlName="category">
+                        <option *ngFor="let filter of fields" [value]="filter">{{ filter | titlecase }}</option>
+                    </select>
+                </div>
+                <div class="price-options">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" [style.color]="estiloInput('price')"><i class="fad fa-usd-circle"></i></span>
+                        <input type="number" class="form-control" placeholder="Precio" formControlName="price" min="1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" [style.color]="estiloInput('discountPercentage')"><i class="fad fa-percentage"></i></span>
+                        <input type="number" class="form-control" placeholder="Porciento de descuento" min="0" max="100" formControlName="discountPercentage" required>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" [style.color]="estiloInput('description')"><i class="fad fa-clipboard"></i></span>
+                    <textarea class="form-control" formControlName="description" placeholder="Descripción" required></textarea>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text" [style.color]="estiloInput('stock')"><i class="fad fa-calculator"></i></span>
+                    <input type="number" class="form-control" placeholder="Unidades disponibles" min="0" formControlName="stock" required>
+                </div>
+            </div>
+        </div>
+        <div class="card product-images px-3">
+            <div class="image-upload">
+                <label for="images">
+                  <image-slider [images]="images.length > 0 ? images : [defaultImage]"></image-slider>
+                </label>
+                <input id="images" type="file" accept="image/*" [multiple]="true" required (change)="showImages($event)"/>
+            </div>
+        </div>
+        <div class="card form-btns mt-3 p-3">
+            <button [disabled]="id ? (productForm.invalid || !thumbnail || images.length === 0) : (productForm.invalid || !thumbnailFile || imagesFiles.length === 0)" type="submit" class="mx-2 btn btn-success btn-form btn">{{ action }}</button>
+            <button *ngIf="!id" type="button" class="mx-2 btn btn-info btn-form btn" (click)="reset()">Limpiar</button>
+        </div>
+    </form>
+</div>
+<app-load *ngIf="loading"></app-load>

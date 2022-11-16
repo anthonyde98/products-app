@@ -1,0 +1,58 @@
+.card{
+    background: #fff;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, .5);
+    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+    border: 0;
+    border-radius: 1rem;
+}
+
+.card-img,
+.card-img-top{
+    border-top-left-radius: calc(1rem - 1px);
+    border-top-right-radius: calc(1rem - 1px);
+}
+
+.card h5{
+    overflow: hidden;
+    height: 55px;
+}
+
+.card h5 .product-name{
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.card h5 .product-description{
+    font-weight: 300;
+    font-size: .8rem;
+}
+
+.card-img-top{
+    width: 100%;
+    min-height: 250px;
+    max-height: 250px;
+    object-fit: contain;
+    padding: 5px 10px;
+}
+
+.card:hover{
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+.btns a{
+    width: 40px;
+    border-radius: 7px;
+}
+
+.btns a:hover{
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, .5);
+}
+
+.product-description{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}

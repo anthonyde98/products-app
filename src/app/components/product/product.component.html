@@ -1,0 +1,21 @@
+<div class="col hp product-container" *ngIf="product">
+    <div class="card h-100">
+        <img [src]="product.thumbnail || defaultImage" class="card-img-top" [alt]="product.title" />
+        <div class="card-body">
+            <div class="clearfix mb-3">
+                <span class="float-start badge rounded-pill bg-secondary">{{ product.price - (product.price * (product.discountPercentage / 100)) | currency:'USD' }}</span>
+                <span class="float-end badge rounded-pill bg-danger">-{{ product.discountPercentage }}%</span>
+            </div>
+            <h5 class="card-title">
+                <p class="product-name">{{ product.title }}</p>
+                <p class="product-description">{{ product.description }}</p>
+            </h5>
+            <div class="btns d-flex gap-2 my-4 mx-auto justify-content-center">
+                <a [routerLink]="['/products', 'information', product.id]" class="btn btn-info bold-btn"><i class="fad fa-info"></i></a>
+                <a [routerLink]="['/products', 'set']" [queryParams]="{id: product.id}" class="btn btn-warning bold-btn"><i class="fad fa-pen"></i></a>
+                <button (click)="deleteProduct = true" class="btn btn-danger bold-btn"><i class="fad fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<delete-modal *ngIf="deleteProduct" [product]="product" (close)="deleteProduct = false"></delete-modal>

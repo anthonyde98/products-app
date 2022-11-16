@@ -1,0 +1,68 @@
+form{
+    max-width: 1000px;
+}
+
+.page-title{
+    width: fit-content;
+    margin: auto;
+}
+
+.principal-info{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.product-thumbnail .image-upload label{
+    width: 100%;
+}
+
+.product-thumbnail .image-upload img{
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    object-fit: contain;
+}
+
+.product-thumbnail{
+    flex: 3;
+    padding: 15px;
+}
+
+.product-info{
+    flex: 7;
+    padding: 20px;
+}
+
+.image-upload input{
+    display: none;
+}
+
+.form-btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-images{
+    width: fit-content;
+    margin: auto;
+}
+
+@media (max-width: 767px) {
+    .principal-info{
+        display: block
+    }
+
+    .product-thumbnail .image-upload label{
+        width: 100%;
+    }
+
+    .product-thumbnail .image-upload img{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
